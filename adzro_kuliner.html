@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADZRO Kuliner — Mie Ayam Premium & Artisan Fresh Tea</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPrimary: '#E85110', // ADZRO Signature Warm Red-Orange
+                        brandSecondary: '#FF9900', // ADZRO Warm Amber
+                        brandDark: '#1E293B',
+                        brandBgLight: '#FAFAFC',
+                        brandSurface: '#FFFFFF',
+                        brandAccent: '#FFF8F3',
+                    },
+                    fontFamily: {
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .custom-shadow-sm {
+            box-shadow: 0 4px 20px -2px rgba(232, 81, 16, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+        .custom-shadow-lg {
+            box-shadow: 0 12px 32px -4px rgba(232, 81, 16, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+        }
+        .active-filter {
+            background-color: #E85110 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 14px rgba(232, 81, 16, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-brandBgLight text-slate-800 font-sans antialiased selection:bg-brandPrimary selection:text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 custom-shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo Header -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="logo adzro v3.png" alt="ADZRO Kuliner Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                <div class="hidden sm:block border-l border-slate-200 pl-3">
+                    <span class="font-heading text-xl font-extrabold text-slate-900 tracking-tight block leading-none">
+                        ADZRO <span class="text-brandPrimary">KULINER</span>
+                    </span>
+                    <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Mie Ayam & Fresh Tea</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-heading font-semibold text-xs tracking-wider text-slate-600 uppercase">
+                <a href="#beranda" class="hover:text-brandPrimary transition-colors">Beranda</a>
+                <a href="#tentang" class="hover:text-brandPrimary transition-colors">Tentang Kami</a>
+                <a href="#menu" class="hover:text-brandPrimary transition-colors">Daftar Menu</a>
+                <a href="#order" class="hover:text-brandPrimary transition-colors">Order Online</a>
+                <a href="#lokasi" class="hover:text-brandPrimary transition-colors">Lokasi Outlet</a>
+            </nav>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="https://instagram.com/adzro.kuliner" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-brandAccent text-slate-600 hover:text-brandPrimary flex items-center justify-center transition-all border border-slate-200/60" title="Instagram @adzro.kuliner">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+
+                <a href="https://wa.me/6281234567890?text=Halo%20ADZRO%20Kuliner!%20Saya%20ingin%20memesan%20menu" target="_blank" class="px-5 py-2.5 bg-brandPrimary text-white font-heading font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-orange-600 hover:shadow-lg transition-all duration-300 flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Order WhatsApp
+                </a>
+
+                <!-- Mobile Navigation Toggle -->
+                <button id="nav-toggle" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center border border-slate-200" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-drawer" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-5 space-y-4 font-heading font-semibold text-sm uppercase text-slate-700">
+            <a href="#beranda" class="block hover:text-brandPrimary">Beranda</a>
+            <a href="#tentang" class="block hover:text-brandPrimary">Tentang Kami</a>
+            <a href="#menu" class="block hover:text-brandPrimary">Daftar Menu</a>
+            <a href="#order" class="block hover:text-brandPrimary">Order Online</a>
+            <a href="#lokasi" class="block hover:text-brandPrimary">Lokasi Outlet</a>
+            <a href="https://instagram.com/adzro.kuliner" target="_blank" class="block text-brandPrimary">
+                <i class="fa-brands fa-instagram mr-2"></i> @adzro.kuliner
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="beranda" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brandAccent/60 via-white to-brandBgLight overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Info -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brandPrimary/20 text-brandPrimary font-heading text-xs font-bold shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-brandPrimary animate-pulse"></span>
+                        <span>OFFICIAL ADZRO KULINER BRAND</span>
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                        Cita Rasa Autentik <br>
+                        <span class="text-brandPrimary">Mie Ayam & Fresh Tea</span> Kekinian
+                    </h1>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        ADZRO Kuliner menyajikan racikan khas Mie Ayam berumbu lezat dengan topping melimpah, disempurnakan oleh kelezatan Authentic Green Tea & Creamy Thai Tea yang dibuat dari bahan-bahan segar berkualitas tinggi.
+                    </p>
+
+                    <!-- Hero Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-brandPrimary text-white font-heading font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-orange-600 transition-all duration-300 shadow-md flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-book-open text-base"></i> Lihat Menu Lengkap
+                        </a>
+                        <a href="#lokasi" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-800 font-heading font-bold text-xs tracking-wider uppercase rounded-xl border border-slate-200 hover:border-brandPrimary hover:text-brandPrimary transition-all duration-300 flex items-center justify-center gap-3 custom-shadow-sm">
+                            <i class="fa-solid fa-location-dot text-brandPrimary"></i> Kunjungi Outlet
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                        <div>
+                            <span class="block font-heading font-extrabold text-2xl text-brandPrimary">100%</span>
+                            <span class="text-xs text-slate-500 font-semibold uppercase">Bahan Halal & Higienis</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-extrabold text-2xl text-slate-900">Resep Khas</span>
+                            <span class="text-xs text-slate-500 font-semibold uppercase">Racikan Istimewa</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-extrabold text-2xl text-brandSecondary">4.9 ★</span>
+                            <span class="text-xs text-slate-500 font-semibold uppercase">Kepuasan Pelanggan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Logo & Food Showcase Visual -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-6 border border-slate-100 custom-shadow-lg relative text-center">
+                        <div class="bg-brandAccent rounded-2xl p-6 border border-amber-100 mb-6 flex flex-col items-center">
+                            <img src="logo adzro v3.png" alt="Logo ADZRO Official" class="h-44 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="rounded-xl overflow-hidden relative h-36">
+                                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=400" alt="Mie Ayam ADZRO" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent flex items-end p-2.5">
+                                    <span class="text-white font-heading font-bold text-xs">Mie Ayam Special</span>
+                                </div>
+                            </div>
+                            <div class="rounded-xl overflow-hidden relative h-36">
+                                <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=400" alt="Fresh Tea ADZRO" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent flex items-end p-2.5">
+                                    <span class="text-white font-heading font-bold text-xs">Fresh Tea Artisan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="tentang" class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-brandPrimary font-heading text-xs font-extrabold uppercase tracking-widest">TENTANG BRAND ADZRO</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Kualitas Rasa dan Kesegaran Terbaik Untuk Anda
+                </h2>
+                <div class="w-16 h-1 bg-brandPrimary mx-auto rounded-full"></div>
+                <p class="text-slate-600 text-base leading-relaxed pt-2">
+                    <strong>ADZRO Kuliner</strong> didirikan dengan komitmen menyajikan makanan dan minuman bermutu tinggi. Dari olahan Mie Ayam bercita rasa gurih manis nan kaya rempah, hingga minuman segar seperti Authentic Green Tea & Creamy Thai Tea. Kami selalu mengedepankan kualitas bahan premium, kebersihan, dan pelayanan prima.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MENU SECTION ================= -->
+    <section id="menu" class="py-24 bg-brandBgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title & Filters -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brandPrimary font-heading text-xs font-extrabold uppercase tracking-widest">PILIHAN SAJIAN</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">
+                        Daftar Menu ADZRO Kuliner
+                    </h2>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center gap-2" id="menu-filter-container">
+                    <button data-filter="all" class="filter-btn active-filter px-5 py-2.5 rounded-xl bg-white text-slate-700 font-heading font-bold text-xs uppercase border border-slate-200 transition-all">
+                        Semua Menu
+                    </button>
+                    <button data-filter="mie" class="filter-btn px-5 py-2.5 rounded-xl bg-white text-slate-700 hover:text-brandPrimary font-heading font-bold text-xs uppercase border border-slate-200 transition-all">
+                        Mie Ayam
+                    </button>
+                    <button data-filter="drink" class="filter-btn px-5 py-2.5 rounded-xl bg-white text-slate-700 hover:text-brandPrimary font-heading font-bold text-xs uppercase border border-slate-200 transition-all">
+                        Minuman Fresh
+                    </button>
+                    <button data-filter="package" class="filter-btn px-5 py-2.5 rounded-xl bg-white text-slate-700 hover:text-brandPrimary font-heading font-bold text-xs uppercase border border-slate-200 transition-all">
+                        Paket Hemat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                
+                <!-- Menu Item 1 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden border border-slate-100 custom-shadow-sm hover:custom-shadow-lg transition-all duration-300 flex flex-col justify-between" data-category="mie">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=600" alt="Mie Ayam Spesial ADZRO" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-brandPrimary text-white font-heading font-bold text-[10px] uppercase px-3 py-1 rounded-md shadow-sm">
+                                REKOMENDASI 🍜
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-lg font-bold text-slate-900">Mie Ayam Spesial ADZRO</h3>
+                                <span class="font-heading font-extrabold text-brandPrimary text-lg">Rp 18.000</span>
+                            </div>
+                            <p class="text-slate-500 text-xs leading-relaxed">Mie kenyal gurih dengan topping daging ayam cincang bumbu spesial, dilengkapi pangsit dan bakso segar.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="orderWA('Mie Ayam Spesial ADZRO', '18.000')" class="w-full py-3 bg-brandAccent hover:bg-brandPrimary text-brandPrimary hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl border border-orange-200 hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden border border-slate-100 custom-shadow-sm hover:custom-shadow-lg transition-all duration-300 flex flex-col justify-between" data-category="drink">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600" alt="ADZRO Authentic Green Tea" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-emerald-600 text-white font-heading font-bold text-[10px] uppercase px-3 py-1 rounded-md shadow-sm">
+                                SEGAR & BEST SELLER 🍵
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-lg font-bold text-slate-900">ADZRO Green Tea</h3>
+                                <span class="font-heading font-extrabold text-brandPrimary text-lg">Rp 10.000</span>
+                            </div>
+                            <p class="text-slate-500 text-xs leading-relaxed">Ekstrak teh hijau asli bercita rasa autentik, disajikan dingin dengan tingkat kemanisan yang sempurna.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="orderWA('ADZRO Green Tea', '10.000')" class="w-full py-3 bg-brandAccent hover:bg-brandPrimary text-brandPrimary hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl border border-orange-200 hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden border border-slate-100 custom-shadow-sm hover:custom-shadow-lg transition-all duration-300 flex flex-col justify-between" data-category="drink">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&q=80&w=600" alt="ADZRO Creamy Thai Tea" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-amber-600 text-white font-heading font-bold text-[10px] uppercase px-3 py-1 rounded-md shadow-sm">
+                                RICH & CREAMY 🧋
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-lg font-bold text-slate-900">ADZRO Creamy Thai Tea</h3>
+                                <span class="font-heading font-extrabold text-brandPrimary text-lg">Rp 10.000</span>
+                            </div>
+                            <p class="text-slate-500 text-xs leading-relaxed">Kombinasi Thai Tea berkualitas dengan susu kental manis yang lembut, manis, dan nikmat.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="orderWA('ADZRO Creamy Thai Tea', '10.000')" class="w-full py-3 bg-brandAccent hover:bg-brandPrimary text-brandPrimary hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl border border-orange-200 hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden border border-slate-100 custom-shadow-sm hover:custom-shadow-lg transition-all duration-300 flex flex-col justify-between" data-category="package">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&q=80&w=600" alt="Paket Combo ADZRO" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-brandSecondary text-white font-heading font-bold text-[10px] uppercase px-3 py-1 rounded-md shadow-sm">
+                                PAKET HEMAT 🔥
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-lg font-bold text-slate-900">Combo Mie Ayam + Fresh Tea</h3>
+                                <span class="font-heading font-extrabold text-brandPrimary text-lg">Rp 25.000</span>
+                            </div>
+                            <p class="text-slate-500 text-xs leading-relaxed">Paket komplit 1 porsi Mie Ayam Spesial + Bebas pilih Green Tea / Thai Tea segar.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="orderWA('Combo Mie Ayam + Fresh Tea', '25.000')" class="w-full py-3 bg-brandAccent hover:bg-brandPrimary text-brandPrimary hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl border border-orange-200 hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden border border-slate-100 custom-shadow-sm hover:custom-shadow-lg transition-all duration-300 flex flex-col justify-between" data-category="mie">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&q=80&w=600" alt="Pangsit Goreng Crispy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-slate-800 text-white font-heading font-bold text-[10px] uppercase px-3 py-1 rounded-md shadow-sm">
+                                EXTRA TOPPING 🥟
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-lg font-bold text-slate-900">Pangsit Goreng Crispy</h3>
+                                <span class="font-heading font-extrabold text-brandPrimary text-lg">Rp 12.000</span>
+                            </div>
+                            <p class="text-slate-500 text-xs leading-relaxed">Pangsit goreng isi adonan olahan ayam gurih renyah, sempurna untuk teman makan mie.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="orderWA('Pangsit Goreng Crispy', '12.000')" class="w-full py-3 bg-brandAccent hover:bg-brandPrimary text-brandPrimary hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl border border-orange-200 hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ORDER MULTI CHANNEL ================= -->
+    <section id="order" class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <span class="text-brandPrimary font-heading text-xs font-extrabold uppercase tracking-widest">LAYANAN PEMESANAN</span>
+                <h2 class="font-heading text-3xl font-extrabold text-slate-900">Pesan Online Mudah & Cepat</h2>
+                <p class="text-slate-500 text-sm">Pilih platform pengiriman atau layanan pesan antar favorit Anda di bawah ini:</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- WhatsApp Card -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4 hover:border-emerald-500 transition-all custom-shadow-sm flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-slate-900 text-lg">WhatsApp Direct</h3>
+                        <p class="text-slate-500 text-xs">Pesan langsung ke kasir kami untuk respon cepat & layanan pesan antar.</p>
+                    </div>
+                    <a href="https://wa.me/6281234567890?text=Halo%20ADZRO%20Kuliner!%20Saya%20mau%20order" target="_blank" class="block w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-xs uppercase rounded-xl transition-colors">
+                        Chat WhatsApp
+                    </a>
+                </div>
+
+                <!-- GoFood Card -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4 hover:border-emerald-500 transition-all custom-shadow-sm flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-slate-900 text-lg">GoFood</h3>
+                        <p class="text-slate-500 text-xs">Temukan ADZRO Kuliner di aplikasi GoJek dan gunakan promo diskon menarik.</p>
+                    </div>
+                    <a href="https://gofood.co.id" target="_blank" class="block w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-heading font-bold text-xs uppercase rounded-xl transition-colors">
+                        Buka GoFood
+                    </a>
+                </div>
+
+                <!-- ShopeeFood Card -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4 hover:border-orange-500 transition-all custom-shadow-sm flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-slate-900 text-lg">ShopeeFood</h3>
+                        <p class="text-slate-500 text-xs">Gunakan Voucher Diskon & Gratis Ongkir ShopeeFood untuk pemesanan ADZRO.</p>
+                    </div>
+                    <a href="https://shopee.co.id" target="_blank" class="block w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase rounded-xl transition-colors">
+                        Buka ShopeeFood
+                    </a>
+                </div>
+
+                <!-- GrabFood Card -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4 hover:border-green-600 transition-all custom-shadow-sm flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-14 h-14 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-slate-900 text-lg">GrabFood</h3>
+                        <p class="text-slate-500 text-xs">Pesan menu favorit ADZRO melalui pengiriman cepat GrabFood.</p>
+                    </div>
+                    <a href="https://food.grab.com" target="_blank" class="block w-full py-2.5 bg-green-600 hover:bg-green-700 text-white font-heading font-bold text-xs uppercase rounded-xl transition-colors">
+                        Buka GrabFood
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LOCATION & CONTACT SECTION ================= -->
+    <section id="lokasi" class="py-24 bg-brandBgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Outlet Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-brandPrimary font-heading text-xs font-extrabold uppercase tracking-widest">LOKASI OUTLET KAMI</span>
+                        <h2 class="font-heading text-3xl font-extrabold text-slate-900 mt-1">Kunjungi Outlet Resmi ADZRO Kuliner</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 custom-shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brandAccent text-brandPrimary flex items-center justify-center text-lg shrink-0 border border-orange-100">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-slate-900 text-sm">Alamat Outlet</h4>
+                                <p class="text-slate-600 text-xs mt-1">Cluster Sirena, Grand Batavia II, Blok 3 No. 55</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 custom-shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-amber-50 text-brandSecondary flex items-center justify-center text-lg shrink-0 border border-amber-100">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-slate-900 text-sm">Jam Operasional</h4>
+                                <p class="text-slate-600 text-xs mt-1">Buka Setiap Hari: <span class="font-bold text-brandPrimary">10.00 - 21.00 WIB</span></p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 custom-shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-lg shrink-0 border border-purple-100">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-slate-900 text-sm">Official Social Media</h4>
+                                <a href="https://instagram.com/adzro.kuliner" target="_blank" class="text-brandPrimary font-semibold hover:underline text-xs mt-1 block">
+                                    @adzro.kuliner
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-brandDark text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-800 transition-colors shadow-sm">
+                        <i class="fa-solid fa-location-arrow text-brandPrimary"></i> Buka Rute Google Maps
+                    </a>
+                </div>
+
+                <!-- Google Maps Frame -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white p-3 rounded-2xl border border-slate-200 custom-shadow-lg h-[400px]">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.273646549557!2d106.80054731476916!3d-6.227608995491953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14d30079f01%3A0x2e74da6800707331!2sGelora%20Bung%20Karno!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid" 
+                            width="100%" 
+                            height="100%" 
+                            class="rounded-xl border border-slate-100"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-slate-900 text-slate-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Footer Brand Column -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="logo adzro v3.png" alt="ADZRO Logo Footer" class="h-10 w-auto bg-white p-1 rounded-lg">
+                        <span class="font-heading text-lg font-extrabold text-white">ADZRO KULINER</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        Pilihan rasa terbaik untuk sajian Mie Ayam & Fresh Tea berkualitas tinggi. Dikemas higienis dengan bahan mutu premium.
+                    </p>
+                </div>
+
+                <!-- Nav Column -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold text-white uppercase tracking-wider mb-4">Navigasi Website</h4>
+                    <ul class="space-y-2 text-xs font-medium">
+                        <li><a href="#beranda" class="hover:text-brandPrimary transition-colors">Beranda Utama</a></li>
+                        <li><a href="#tentang" class="hover:text-brandPrimary transition-colors">Tentang ADZRO</a></li>
+                        <li><a href="#menu" class="hover:text-brandPrimary transition-colors">Menu & Harga</a></li>
+                        <li><a href="#order" class="hover:text-brandPrimary transition-colors">Order Online</a></li>
+                        <li><a href="#lokasi" class="hover:text-brandPrimary transition-colors">Lokasi Outlet</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social & Contact -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold text-white uppercase tracking-wider mb-4">Kontak & Instagram</h4>
+                    <div class="space-y-3">
+                        <a href="https://instagram.com/adzro.kuliner" target="_blank" class="flex items-center gap-3 text-slate-300 hover:text-brandPrimary text-xs transition-colors">
+                            <i class="fa-brands fa-instagram text-lg text-brandPrimary"></i>
+                            <span>@adzro.kuliner</span>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-3 text-slate-300 hover:text-brandPrimary text-xs transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                            <span>WhatsApp CS ADZRO</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center text-[11px] text-slate-500 font-mono">
+                <p>&copy; 2026 ADZRO KULINER. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/6281234567890?text=Halo%20ADZRO%20Kuliner!%20Saya%20mau%20order" target="_blank" class="px-5 py-3.5 bg-brandPrimary text-white font-heading font-bold text-xs uppercase tracking-wider rounded-full shadow-lg hover:bg-orange-600 hover:scale-105 transition-all duration-300 flex items-center gap-3">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span class="hidden sm:inline">Order WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Mobile Navbar Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        navToggle.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+
+        // Dynamic Menu Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active-filter');
+                });
+
+                btn.classList.add('active-filter');
+                const filter = btn.getAttribute('data-filter');
+
+                menuCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // WhatsApp Order Link Generator
+        function orderWA(itemName, price) {
+            const phone = "6281234567890";
+            const message = encodeURIComponent(`Halo ADZRO Kuliner! 🍜\nSaya ingin memesan menu berikut:\n- ${itemName} (Rp ${price})\n\nMohon informasi total harga beserta ongkos kirimnya. Terima kasih!`);
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
